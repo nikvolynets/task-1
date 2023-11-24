@@ -5,6 +5,7 @@ Questions for Senior Analytics Engineering position (with answers)
 
 ```sql
 -- Increase query performance by replacing subqueries with CTEs
+
 -- Calculate average order amount and order count by customer on orders for the last 180 days
 with act_orders as (
     select 
@@ -41,7 +42,7 @@ Please write a SQL query to calculate the rolling average credit consumption ove
     * status could be active or inactive
 * Usage (event_id, customer_id, credits_consumed, date, price per credit)
 
-sql
+```sql
 -- Calculate total amount of credits consumed by active customers
 with act_customers as (
     select 
@@ -76,10 +77,16 @@ select
 from ranked_customers
 where 1=1
     and rank <= 5
+```
 
 ### 3. What is the dbt command to build the ‘usage’ model including all upstream and downstream models (include related tests as well)
 
 dbt build --select +usage+
+
+'dbt build' command runs and tests model
+'--select' command choose spefic model
+'+' before model name includes all upstream models
+'+' after model name includes all downstream models
 
 ### 4. Assuming the ‘usage’ model lives in the analytics.production schema, what grants would the role assigned to the dbt user require in order to build the model? 
 
@@ -91,8 +98,9 @@ The following roles should be granted to dbt user in the 'analytics' database:
 
 You can grant these permissions to the role assigned to the dbt user by running the following SQL statements:
 
-sql
+```sql
 GRANT USAGE ON DATABASE analytics TO ROLE dbt_role;
 GRANT USAGE ON SCHEMA analytics.production TO ROLE dbt_role;
 GRANT CREATE TABLE ON SCHEMA analytics.production TO ROLE dbt_role;
 GRANT CREATE VIEW ON SCHEMA analytics.production TO ROLE dbt_role;
+```
