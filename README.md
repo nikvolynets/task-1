@@ -101,13 +101,10 @@ where 1=1
 ```
 dbt build --select +usage+
 ```
-'dbt build' command runs and tests model
-
-'--select' command choose spefic model
-
-'+' before model name includes all upstream models
-
-'+' after model name includes all downstream models
+'dbt build' command runs and tests model </br>
+'--select' command choose spefic model </br>
+'+' before model name includes all upstream models </br>
+'+' after model name includes all downstream models </br>
 
 ### 4. Assuming the ‘usage’ model lives in the analytics.production schema, what grants would the role assigned to the dbt user require in order to build the model? 
 
