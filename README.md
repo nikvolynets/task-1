@@ -114,7 +114,7 @@ The following roles should be granted to dbt user in the 'analytics' database:
 
 * USAGE on all schemas,SELECT on all tables, SELECT on all views, CREATE on the ‘analytics’ database.
 
-You can grant these permissions to the role assigned to the dbt user by running the following SQL statements:
+These permissions to the role could be assigned to the dbt user by running the following SQL statements:
 
 ```sql
 GRANT USAGE ON DATABASE analytics TO ROLE dbt_role;
