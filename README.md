@@ -98,9 +98,9 @@ where 1=1
 ```
 
 ### 3. What is the dbt command to build the ‘usage’ model including all upstream and downstream models (include related tests as well)
-
+```
 dbt build --select +usage+
-
+```
 'dbt build' command runs and tests model
 '--select' command choose spefic model
 '+' before model name includes all upstream models
