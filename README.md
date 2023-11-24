@@ -3,6 +3,24 @@ Questions for Senior Analytics Engineering position (with answers)
 
 ### 1. Please refactor this SQL snippet so it's performant on an OLAP database, like Snowflake.
 
+#### Initial snippet:
+```sql
+select
+    customer_id,
+    first_name,
+    last_name,
+    (select round(avg(total_amount),2) from {{ ref('orders') }} where orders.customer_id = customers.customer_id and ordered_at > current_date - 180) as avg_order_amount,
+    (select count(*) from {{ ref('orders') }} where orders.customer_id = customers.customer_id and ordered_at > current_date - 180) as order_count
+from {{ ref('customers') }}
+where customer_id in (
+  select distinct customer_id
+  from {{ ref('orders') }}
+  where ordered_at > current_date - 42
+)
+```
+
+#### Answer:
+
 ```sql
 -- Increase query performance by replacing subqueries with CTEs
 
