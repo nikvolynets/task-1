@@ -3,7 +3,7 @@ Questions for Senior Analytics Engineering position (with answers)
 
 ### 1. Please refactor this SQL snippet so it's performant on an OLAP database, like Snowflake.
 
-sql
+```sql
 -- Increase query performance by replacing subqueries with CTEs
 -- Calculate average order amount and order count by customer on orders for the last 180 days
 with act_orders as (
@@ -32,6 +32,7 @@ select
 from {{ ref('customers') }} c 
 inner join act_customers ac on c.customer_id = ac.customer_id
 left join act_orders ao on c.customer_id = ao.customer_id
+```
 
 ### 2. Suppose we have the following schema with two tables: Customers and usage.
 
